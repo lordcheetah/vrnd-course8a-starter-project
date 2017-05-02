@@ -6,7 +6,7 @@ public class ControllerInputManager : MonoBehaviour
 {
 	private SteamVR_TrackedObject trackedObj;
 	private SteamVR_Controller.Device device;
-	//public float throwForce = 1.5f;
+	public float throwForce = 1.5f;
 
 	private LineRenderer laser;
 	public GameObject teleportAimerObject;
@@ -27,14 +27,14 @@ public class ControllerInputManager : MonoBehaviour
 	public float moveSpeed = 4f;
 	private Vector3 movementDirection;
 
-	/*//swipe
+	//swipe
 	public float swipeSum;
 	public float touchLast;
 	public float touchCurrent;
 	public float distance;
 	public bool hasSwipedLeft;
 	public bool hasSwipedRight;
-	public ObjectMenuManager objectMenuManager;*/
+	public ObjectMenuManager objectMenuManager;
 
 	// Use this for initialization
 	void Start ()
@@ -105,7 +105,7 @@ public class ControllerInputManager : MonoBehaviour
 			isDashing = true;
 		}
 
-		/*if (device.GetTouchDown (SteamVR_Controller.ButtonMask.Touchpad))
+		if (device.GetTouchDown (SteamVR_Controller.ButtonMask.Touchpad))
 		{
 			//SteamVR_LoadLevel.Begin (Scene1);
 			touchLast = device.GetAxis (Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
@@ -151,10 +151,10 @@ public class ControllerInputManager : MonoBehaviour
 		{
 			//spawn object currently selected by menu
 			SpawnObject();
-		}*/
+		}
 	}
 
-	/*void SpawnObject()
+	void SpawnObject()
 	{
 		objectMenuManager.SpawnCurrentObject ();
 	}
@@ -193,13 +193,13 @@ public class ControllerInputManager : MonoBehaviour
 
 	void SwipedLeft()
 	{
-		objectMenuManager.MenuLeft ();
+		//objectMenuManager.MenuLeft ();
 		Debug.Log ("SwipeLeft");
 	}
 
 	void SwipedRight()
 	{
-		objectMenuManager.MenuRight ();
+		//objectMenuManager.MenuRight ();
 		Debug.Log ("SwipeRight");
-	}*/
+	}
 }
