@@ -34,7 +34,7 @@ public class ControllerInputManager : MonoBehaviour
 	public float distance;
 	public bool hasSwipedLeft;
 	public bool hasSwipedRight;
-	public ObjectMenuManager objectMenuManager;
+	//public ObjectMenuManager objectMenuManager;
 
 	// Use this for initialization
 	void Start ()
@@ -156,7 +156,7 @@ public class ControllerInputManager : MonoBehaviour
 
 	void SpawnObject()
 	{
-		objectMenuManager.SpawnCurrentObject ();
+		//objectMenuManager.SpawnCurrentObject ();
 	}
 
 	void OnTriggerStay(Collider col)
