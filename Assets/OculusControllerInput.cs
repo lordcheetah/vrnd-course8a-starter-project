@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OculusControllerInput : MonoBehaviour {
-	public SteamVR_TrackedObject trackedObj;
-	public SteamVR_Controller.Device device;
+	//public SteamVR_TrackedObject trackedObj;
+	//public SteamVR_Controller.Device device;
 
 	private OVRInput.Controller thisController;
 
@@ -19,13 +19,13 @@ public class OculusControllerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		trackedObj = GetComponent<SteamVR_TrackedObject> ();
+		//trackedObj = GetComponent<SteamVR_TrackedObject> ();
 		laser = GetComponentInChildren<LineRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		device = SteamVR_Controller.Input ((int)trackedObj.index);
+		//device = SteamVR_Controller.Input ((int)trackedObj.index);
 
 		if (OVRInput.Get (OVRInput.Button.DpadLeft))
 		{
