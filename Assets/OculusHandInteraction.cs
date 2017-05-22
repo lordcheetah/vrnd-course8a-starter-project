@@ -44,8 +44,8 @@ public class OculusHandInteraction : MonoBehaviour {
 		{
 			thisController = OVRInput.Controller.RTouch;
 		}
-		InitializeOVRHaptics();
 		laser = GetComponentInChildren<LineRenderer> ();
+		InitializeOVRHaptics();
 	}
 	
 	// Update is called once per frame

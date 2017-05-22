@@ -1,0 +1,50 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_IPC_CompositorInvalidConnectResponse: "Shared IPC Compositor Invalid Connect Response (307)"!
+ 
+(Filename:  Line: 954)
+
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x162)
+    Vendor:   Intel
+    VRAM:     912 MB
+    Driver:   10.18.10.4358
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+- Completed reload, in  0.107 seconds
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\third\Documents\GitHub\vrnd-course8a-starter-project\Builds\RubeGoldberg_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_Init_ShuttingDown: "VR system shutting down (119)"!
+ 
+(Filename:  Line: 954)
+
+VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_Init_ShuttingDown: "VR system shutting down (119)"!
+ 
+(Filename:  Line: 954)
+
+[CAPI] LibOVR module is located at C:\Program Files\Oculus\Support\oculus-runtime\LibOVRRT64_1.dllConnected to the server running version (prod = 1).1.14.0(build = 378771) feature version = 0. Client runs version (prod = 1).1.14.0(build = 378771) feature version = 0[HMDState] Using default profile defaultIAD changed to 67.7mmCreating factory[VRDevice] Successfully created device Oculus.
+Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.Null chain pointer provided.UnloadTime: 1.552769 ms
+Unity v5.5.1f1, Oculus Utilities v1.13.0, OVRPlugin v1.10.0, SDK v1.14.0.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1728 -> priority: 1 
+  Thread -> id: 440c -> priority: 1 
+Prediction interval too high: 0.100479 s, clamping at 0.100000 s
