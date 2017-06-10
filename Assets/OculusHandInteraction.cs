@@ -29,9 +29,7 @@ public class OculusHandInteraction : MonoBehaviour {
 	[SerializeField]
 	OVRInput.Controller controllerMask;
 
-	private OVRHapticsClip clipLight;
-	private OVRHapticsClip clipMedium;
-	private OVRHapticsClip clipHard;
+	private OVRHapticsClip HapticsClip;
 
 	private float menuStickX;
 
@@ -45,12 +43,47 @@ public class OculusHandInteraction : MonoBehaviour {
 			thisController = OVRInput.Controller.RTouch;
 		}
 		laser = GetComponentInChildren<LineRenderer> ();
-		InitializeOVRHaptics();
+		//InitializeOVRHaptics();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		menuStickX = OVRInput.Get (OVRInput.Axis2D.PrimaryThumbstick, thisController).x;
+		if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+		{
+			Debug.Log ("ARG!");
+			laser.gameObject.SetActive (true);
+			teleportAimerObject.SetActive (true);
+
+			laser.SetPosition (0, gameObject.transform.position);
+			RaycastHit hit;
+			if (Physics.Raycast (transform.position, transform.forward, out hit, 15, laserMask))
+			{
+				teleportLocation = hit.point;
+				laser.SetPosition (1, teleportLocation);
+				//aimer position
+				teleportAimerObject.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + yNudgeAmount, teleportLocation.z);
+			}
+			else
+			{
+				teleportLocation = new Vector3 (transform.forward.x * 15 + transform.forward.x, transform.forward.y * 15 + transform.position.y, transform.forward.z * 15 + transform.position.z);
+				RaycastHit groundRay;
+				if (Physics.Raycast (teleportLocation, -Vector3.up, out groundRay, 17, laserMask))
+				{
+					teleportLocation = new Vector3 (transform.forward.x * 15 + transform.position.x, groundRay.point.y, transform.forward.z * 15 + transform.position.z);
+
+				}
+				laser.SetPosition (1, transform.forward * 15 + transform.position);
+				//aimer position
+				teleportAimerObject.transform.position = teleportLocation + new Vector3(0, yNudgeAmount, 0);
+			}
+		}
+
+		if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
+		{
+			laser.gameObject.SetActive (false);
+			teleportAimerObject.SetActive (false);
+		}
+		/*menuStickX = OVRInput.Get (OVRInput.Axis2D.PrimaryThumbstick, thisController).x;
 		if (leftHand && menuStickX < 0.45f && menuStickX > -0.45f)
 		{
 			laser.gameObject.SetActive (true);
@@ -84,7 +117,7 @@ public class OculusHandInteraction : MonoBehaviour {
 			laser.gameObject.SetActive (false);
 			teleportAimerObject.SetActive (false);
 			player.transform.position = teleportLocation;
-		}
+		}*/
 	}
 
 	void OnTriggerStay(Collider col)
@@ -105,7 +138,8 @@ public class OculusHandInteraction : MonoBehaviour {
 	{
 		coli.transform.SetParent (gameObject.transform);
 		coli.GetComponent<Rigidbody> ().isKinematic = true;
-		Vibrate (VibrationForce.Light);
+		//Vibrate (VibrationForce.Light);
+		ApplyHapticFeedback (VibrationForce.Light);
 		Debug.Log ("You are touching down the trigger on an object");
 	}
 
@@ -125,12 +159,15 @@ public class OculusHandInteraction : MonoBehaviour {
 		Debug.Log ("You have released the trigger");
 	}
 
-	private void InitializeOVRHaptics()
+	/*private void InitializeOVRHaptics()
 	{
-		int cnt = 10;
+		const int cnt = 10;
 		clipLight = new OVRHapticsClip(cnt);
 		clipMedium = new OVRHapticsClip(cnt);
 		clipHard = new OVRHapticsClip(cnt);
+		Debug.Log (clipLight.Samples.Length.ToString ());
+		Debug.Log (clipMedium.Samples.Length.ToString ());
+		Debug.Log (clipHard.Samples.Length.ToString ());
 		for (int i = 0; i < cnt; i++)
 		{
 			clipLight.Samples[i] = i % 2 == 0 ? (byte)0 : (byte)75;
@@ -161,5 +198,33 @@ public class OculusHandInteraction : MonoBehaviour {
 			channel.Preempt(clipHard);
 			break;
 		}
+	}*/
+
+	public void ApplyHapticFeedback(VibrationForce vibrationForce)
+	{
+		HapticsClip.Reset();
+		int cnt = 10;
+		for (int i = 0; i < cnt; i++) {
+			switch (vibrationForce) {
+				case VibrationForce.Light:
+					HapticsClip.WriteSample (i % 2 == 0 ? (byte)0 : (byte)75);
+					break;
+				case VibrationForce.Medium:
+					HapticsClip.WriteSample (i % 2 == 0 ? (byte)0 : (byte)150);
+					break;
+				case VibrationForce.Hard:
+					HapticsClip.WriteSample (i % 2 == 0 ? (byte)0 : (byte)255);
+					break;
+			}
+		}
+		HapticsClip.WriteSample(0);
+		HapticsClip.WriteSample(0);
+		HapticsClip.WriteSample(0);
+		HapticsClip.WriteSample(0);
+
+		if (leftHand)
+			OVRHaptics.LeftChannel.Preempt(HapticsClip);
+		else
+			OVRHaptics.RightChannel.Preempt(HapticsClip);
 	}
 }
